@@ -1,0 +1,12 @@
+# Mintlify
+.mint/
+.mintlify/
+export.zip
+_site/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
