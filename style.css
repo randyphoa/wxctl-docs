@@ -1,0 +1,248 @@
+/* Hero image leading a page: drop the prose top margin that escapes the
+   react-medium-image-zoom wrapper. The wrapper span (display:contents) is the
+   real :first-child of .mdx-content, so Mintlify's `.prose > :first-child {
+   margin-top: 0 }` reset never reaches the nested <img>, leaving it with the
+   prose default (margin-top: 32px) stacked on top of the page-header `mt-8`. */
+.mdx-content > span[data-rmiz]:first-child img {
+  margin-top: 0;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Compose → Engine flow diagram (introduction · "How wxctl solves it").
+   Hand-built so the two phases, the config.yaml handoff, and the equal-width
+   step cards render pixel-identical instead of mermaid's auto-sized boxes.
+   Carbon palette; node fills stay readable in both light and dark themes.
+   ────────────────────────────────────────────────────────────────────────── */
+.wxctl-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 1.75rem auto;
+  max-width: 540px;
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+/* Pipeline (concepts/pipeline) reuses the flow system but packs 5 stage nodes
+   into one row, so it needs a touch more width than the intro's 4-node rows. */
+.wxctl-flow--pipeline { max-width: 640px; }
+
+.wxctl-flow-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  background: #0F62FE;
+  color: #ffffff;
+  border: 1px solid #0043CE;
+  border-radius: 999px;
+  padding: 0.45rem 1.35rem;
+  text-align: center;
+}
+.wxctl-flow-entry-title { font-weight: 600; }
+.wxctl-flow-entry-sub {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #D0E2FF;
+}
+
+.wxctl-phase {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  padding: 0.8rem 0.85rem 0.95rem;
+  box-sizing: border-box;
+  box-shadow: 0 1px 2px rgba(13, 40, 90, 0.05), 0 6px 16px rgba(13, 40, 90, 0.05);
+}
+.wxctl-phase--compose { background: #F7FBFF; border: 1px solid #D0E2FF; }
+.wxctl-phase--engine  { background: #FAFBFC; border: 1px solid #DDE1E6; }
+
+.wxctl-phase-num {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.wxctl-phase-num--compose { background: #0F62FE; color: #ffffff; }
+.wxctl-phase-num--engine  { background: #DDE1E6; color: #4D5358; }
+
+.wxctl-phase-tag {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+.wxctl-phase-tag--compose { color: #0043CE; }
+.wxctl-phase-tag--engine  { color: #4D5358; }
+
+.wxctl-phase-steps {
+  display: flex;
+  align-items: stretch;
+  gap: 0.4rem;
+}
+
+.wxctl-node {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.2rem;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0.6rem 0.4rem;
+  min-height: 3.1rem;
+  box-shadow: 0 1px 2px rgba(13, 40, 90, 0.06);
+}
+.wxctl-node--compose { background: #EDF5FF; border: 1.5px solid #4589FF; color: #0043CE; }
+.wxctl-node--engine  { background: #F2F4F8; border: 1.5px solid #C1C7CD; color: #21272A; }
+
+.wxctl-node-title { font-weight: 600; }
+.wxctl-node-sub {
+  font-size: 0.68rem;
+  font-weight: 400;
+  line-height: 1.15;
+  opacity: 0.78;
+}
+
+.wxctl-step-arrow {
+  flex: 0 0 auto;
+  align-self: center;
+  color: #A2A9B0;
+  font-size: 0.95rem;
+}
+
+.wxctl-conn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0;
+}
+.wxctl-conn-line {
+  width: 2px;
+  height: 0.9rem;
+  background: #C1C7CD;
+}
+.wxctl-conn-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #C1C7CD;
+  margin-top: -0.3rem;
+}
+.wxctl-conn-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #0F62FE;
+  background: #EDF5FF;
+  border: 1px solid #D0E2FF;
+  border-radius: 999px;
+  padding: 0.13rem 0.6rem;
+  text-align: center;
+}
+.wxctl-conn-label--resolve {
+  font-weight: 500;
+}
+.wxctl-conn-label--resolve code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92em;
+}
+.wxctl-conn-note {
+  font-size: 0.66rem;
+  color: #697077;
+  text-align: center;
+  margin-top: -0.05rem;
+}
+
+.wxctl-artifact-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.wxctl-artifact {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border: 2px solid #0F62FE;
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+  color: #0F62FE;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 1px 2px rgba(13, 40, 90, 0.06), 0 6px 14px rgba(13, 40, 90, 0.07);
+}
+.wxctl-artifact-sub {
+  font-size: 0.72rem;
+  color: #697077;
+  text-align: center;
+}
+.wxctl-artifact-sub code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  color: #0043CE;
+}
+
+/* Lifecycle strip — one pipeline, every verb. */
+.wxctl-lifecycle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.1rem;
+}
+.wxctl-life-step {
+  background: #F2F4F8;
+  border: 1px solid #C1C7CD;
+  border-radius: 999px;
+  padding: 0.28rem 0.85rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #21272A;
+}
+.wxctl-life-dot { color: #A2A9B0; font-weight: 700; }
+.wxctl-lifecycle-cap {
+  margin-top: 0.5rem;
+  font-size: 0.72rem;
+  color: #697077;
+  text-align: center;
+}
+
+/* Dark theme — keep nodes legible, soften the large phase panels. */
+.dark .wxctl-phase--compose { background: rgba(120, 169, 255, 0.10); border-color: rgba(120, 169, 255, 0.28); }
+.dark .wxctl-phase--engine  { background: rgba(255, 255, 255, 0.045); border-color: rgba(255, 255, 255, 0.14); }
+.dark .wxctl-phase-tag--compose { color: #A6C8FF; }
+.dark .wxctl-phase-tag--engine  { color: #C1C7CD; }
+.dark .wxctl-node--compose { background: rgba(120, 169, 255, 0.16); border-color: #4589FF; color: #C9E0FF; }
+.dark .wxctl-node--engine  { background: rgba(255, 255, 255, 0.06); border-color: #697077; color: #DDE1E6; }
+.dark .wxctl-conn-line { background: #4D5358; }
+.dark .wxctl-conn-arrow { border-top-color: #4D5358; }
+.dark .wxctl-conn-label { background: rgba(120, 169, 255, 0.16); border-color: rgba(120, 169, 255, 0.30); color: #A6C8FF; }
+.dark .wxctl-artifact { background: #161B22; border-color: #4589FF; color: #78A9FF; }
+.dark .wxctl-flow-entry-sub { color: #A6C8FF; }
+.dark .wxctl-artifact-sub { color: #909AA4; }
+.dark .wxctl-artifact-sub code { color: #A6C8FF; }
+.dark .wxctl-life-step { background: rgba(255, 255, 255, 0.06); border-color: #697077; color: #DDE1E6; }
+.dark .wxctl-life-dot { color: #697077; }
+.dark .wxctl-lifecycle-cap { color: #909AA4; }
+.dark .wxctl-phase { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45); }
+.dark .wxctl-node { box-shadow: none; }
+.dark .wxctl-artifact { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45); }
+.dark .wxctl-phase-num--compose { background: #4589FF; color: #001141; }
+.dark .wxctl-phase-num--engine  { background: rgba(255, 255, 255, 0.16); color: #C1C7CD; }
+.dark .wxctl-conn-note { color: #909AA4; }

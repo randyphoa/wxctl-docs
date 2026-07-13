@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="wxctl: Declarative CLI for managing IBM product resources">
+  <title>wxctl social card</title>
+  <rect width="1200" height="630" fill="#161616"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#4589FF"/>
+  <text x="600" y="270" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono, monospace" font-weight="600" font-size="180" letter-spacing="-2"><tspan fill="#4589FF">wx</tspan><tspan fill="#F4F4F4">ctl</tspan></text>
+  <text x="600" y="400" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono, monospace" font-weight="400" font-size="36" fill="#C6C6C6">Declarative CLI for managing IBM product resources</text>
+  <text x="600" y="500" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono, monospace" font-weight="400" font-size="30" fill="#6F6F6F">$ wxctl apply -f config.yaml</text>
+</svg>

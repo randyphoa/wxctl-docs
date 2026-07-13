@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="wxctl">
+  <title>wxctl</title>
+  <rect width="1200" height="300" rx="16" fill="#161616"/>
+  <text x="381" y="150" text-anchor="start" dominant-baseline="central" font-family="IBM Plex Mono, monospace" font-weight="600" font-size="130" letter-spacing="-2"><tspan fill="#4589FF">wx</tspan><tspan fill="#F4F4F4">ctl</tspan></text>
+  <rect x="774" y="110" width="46" height="90" rx="3" fill="#4589FF"/>
+</svg>
